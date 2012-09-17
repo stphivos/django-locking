@@ -1,9 +1,22 @@
-#content-main div#locking_notification {
-    border: 2px solid #f00;
-    padding: 5px;
-    background: #fee;
+#locking_notification {
+    color: #940528;
+    background-color: #f3ccd6;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 2px solid #e89aaf;
+
+    border-radius: 4px;
+    font-size: 10pt;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+
+    padding: 7px 11px;
+
     display: inline-block;
-    font-weight: bold;
     display: none;
-	width: 510px;
+    width: 510px;
+}
+#locking_notification a:link, #locking_notification a:visited,
+#locking_notification a:focus, #locking_notification a:hover {
+    color: #c51a44;
+    text-decoration: underline;
 }

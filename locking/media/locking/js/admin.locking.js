@@ -95,8 +95,20 @@ locking.admin = function() {
         var base_url = settings.base_url + "/" + [app, model, id].join("/");
         unlock_click_event(base_url);
         
+        var $body = $("body");
+        var change_form_css_class = "change-form";
+        var content_main_id = "#content-main";
+
+        // are we working with grappelli?
+        if ($('#grp-admin-title').length > 0) {
+            change_form_css_class = "grp-change-form";
+            content_main_id = "#grp-content";
+        }
+
+        var $content_main = $(content_main_id);
+
         // Don't lock page if not on change-form page.
-        if (!($("body").hasClass("change-form"))) return;
+        if (!($body.hasClass(change_form_css_class))) return;
         
         var is_adding_content = function() {
             return ($.url.segment(3) === 'add' || // On a standard add page.
@@ -129,7 +141,7 @@ locking.admin = function() {
         
         // Creates empty div in top of page.
         var create_notification_area = function() {
-            $("#content-main").prepend(
+            $content_main.prepend(
                 '<div id="locking_notification"></div>');
         };
         
@@ -137,7 +149,7 @@ locking.admin = function() {
         // it in.
         var update_notification_area = function(content, func) {
             $('html, body').scrollTop(0);
-            $("#content-main #locking_notification").html(content).hide()
+            $content_main.find("#locking_notification").html(content).hide()
                                                     .fadeIn('slow', func);
         };
         

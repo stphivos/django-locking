@@ -69,11 +69,16 @@ class LockableAdmin(admin.ModelAdmin):
             lock = Lock.objects.get(entry_id=obj.id,
                                     app=content_type.app_label,
                                     model=content_type.model)
-            class_name = 'locked'
-            locked_by = lock.locked_by.username
-            output = str(obj.id)
-        except Lock.DoesNotExist:
+        except:
+            lock = None
+
+        # if there's no lock, return
+        if not lock or not lock.locked_by:
             return ''
+
+        class_name = 'locked'
+        locked_by = lock.locked_by.username
+        output = str(obj.id)
 
         if lock.is_locked:
             seconds_remaining = lock.lock_seconds_remaining

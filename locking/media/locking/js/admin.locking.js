@@ -158,7 +158,7 @@ locking.admin = function() {
             var minutes = Math.round((settings.time_until_expiration - 
                 settings.time_until_warning) / 60);
             if (minutes < 1) minutes = 1;
-            update_notification_area(interpolate(text.warn, [minutes]), true);
+            update_notification_area(interpolate(text.warn, [minutes]));
         };
         
         // Displays notice on top of page that the page is locked by someone 

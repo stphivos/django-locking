@@ -155,16 +155,10 @@ locking.admin = function() {
         
         // Displays a warning that the page is about to expire.
         var display_warning = function() {
-            var promt_to_save = function() {
-                if (confirm(text.prompt_to_save)) {
-                    $('form input[type=submit][name=_continue]').click();
-                }
-            }
             var minutes = Math.round((settings.time_until_expiration - 
                 settings.time_until_warning) / 60);
             if (minutes < 1) minutes = 1;
-            update_notification_area(interpolate(text.warn, [minutes]), 
-                                     promt_to_save);
+            update_notification_area(interpolate(text.warn, [minutes]), true);
         };
         
         // Displays notice on top of page that the page is locked by someone 

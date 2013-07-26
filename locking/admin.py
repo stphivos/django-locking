@@ -24,7 +24,8 @@ class LockableAdmin(admin.ModelAdmin):
         css = {"all": (_s.STATIC_URL + 'locking/css/locking.css',)}
 
     def get_form(self, request, obj=None, *args, **kwargs):
-        form = super(LockableAdmin, self).get_form(request, *args, **kwargs)
+        form = super(LockableAdmin, self).get_form(request, obj, *args, 
+                                                   **kwargs)
         form.request = request
         form.obj = obj
         return form

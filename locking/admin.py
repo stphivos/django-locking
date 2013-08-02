@@ -16,7 +16,7 @@ class LockableAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 
+            '//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 
             _s.STATIC_URL + 'locking/js/jquery.url.packed.js',
             _s.ADMIN_URL + "ajax/variables.js",
             _s.STATIC_URL + "locking/js/admin.locking.js?v=1"

@@ -16,7 +16,7 @@ class LockableAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 
+            '//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 
             _s.STATIC_URL + 'locking/js/jquery.url.packed.js',
             _s.ADMIN_URL + "ajax/variables.js",
             _s.STATIC_URL + "locking/js/admin.locking.js?v=1"
@@ -24,7 +24,8 @@ class LockableAdmin(admin.ModelAdmin):
         css = {"all": (_s.STATIC_URL + 'locking/css/locking.css',)}
 
     def get_form(self, request, obj=None, *args, **kwargs):
-        form = super(LockableAdmin, self).get_form(request, *args, **kwargs)
+        form = super(LockableAdmin, self).get_form(request, obj, *args, 
+                                                   **kwargs)
         form.request = request
         form.obj = obj
         return form
